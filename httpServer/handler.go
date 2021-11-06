@@ -3,7 +3,7 @@ package httpServer
 import (
 	"github.com/labstack/echo/v4"
 	"github.com/pkg/errors"
-	"shelld1t/mstemplate/pkg/shelld1t/model"
+	"github.com/shelld1t/core/model"
 )
 
 type HandlerFunc = func(ctx echo.Context) model.Response

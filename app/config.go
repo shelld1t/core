@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"io/ioutil"
 
+	"github.com/shelld1t/core/log"
+	database "github.com/shelld1t/core/store"
 	"gopkg.in/yaml.v2"
-	"shelld1t/mstemplate/pkg/shelld1t/log"
-	database "shelld1t/mstemplate/pkg/shelld1t/store"
 )
 
 //todo support json, env file config

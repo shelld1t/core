@@ -6,7 +6,7 @@ import (
 
 	"github.com/labstack/echo/v4"
 	"github.com/pkg/errors"
-	"shelld1t/mstemplate/pkg/shelld1t/traceutils"
+	"github.com/shelld1t/core/traceutils"
 )
 
 var errorTraceIdMultiValue = errors.New("Header [TRACE_ID] must be single value")
