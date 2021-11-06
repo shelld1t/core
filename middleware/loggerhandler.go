@@ -4,8 +4,8 @@ import (
 	"time"
 
 	"github.com/labstack/echo/v4"
-	"shelld1t/mstemplate/pkg/shelld1t/common"
-	"shelld1t/mstemplate/pkg/shelld1t/log"
+	"shelld1t.io/core/common"
+	"shelld1t.io/core/log"
 )
 
 const (

@@ -5,8 +5,8 @@ import (
 	"io/ioutil"
 
 	"gopkg.in/yaml.v2"
-	"shelld1t/mstemplate/pkg/shelld1t/log"
-	database "shelld1t/mstemplate/pkg/shelld1t/store"
+	"shelld1t.io/core/log"
+	database "shelld1t.io/core/store"
 )
 
 //todo support json, env file config

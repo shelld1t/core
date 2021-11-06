@@ -2,8 +2,8 @@ package app
 
 import (
 	"github.com/pkg/errors"
-	"shelld1t/mstemplate/pkg/shelld1t/httpServer"
-	"shelld1t/mstemplate/pkg/shelld1t/log"
+	"shelld1t.io/core/httpServer"
+	"shelld1t.io/core/log"
 )
 
 type App struct {

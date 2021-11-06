@@ -5,8 +5,8 @@ import (
 
 	"github.com/labstack/echo/v4"
 	"github.com/pkg/errors"
-	"shelld1t/mstemplate/pkg/shelld1t/log"
-	"shelld1t/mstemplate/pkg/shelld1t/middleware"
+	"shelld1t.io/core/log"
+	"shelld1t.io/core/middleware"
 )
 
 type Server struct {

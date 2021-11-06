@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"go.uber.org/zap"
-	"shelld1t/mstemplate/pkg/shelld1t/traceutils"
+	"shelld1t.io/core/traceutils"
 )
 
 // Field field of log struct

@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo/v4"
-	"shelld1t/mstemplate/pkg/shelld1t/httpServer"
-	"shelld1t/mstemplate/pkg/shelld1t/model"
+	"shelld1t.io/core/httpServer"
+	"shelld1t.io/core/model"
 )
 
 type Health struct {
