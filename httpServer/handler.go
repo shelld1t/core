@@ -8,6 +8,7 @@ import (
 
 type HandlerFunc = func(ctx echo.Context) model.Response
 
+
 func wrapHandler(handlerFunc HandlerFunc) echo.HandlerFunc {
 	return func(ctx echo.Context) error {
 		res := handlerFunc(ctx)

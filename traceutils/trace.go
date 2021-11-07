@@ -15,7 +15,14 @@ const (
 )
 
 func GenerateTraceId() string {
-	u := uuid.NewV4()
+	u, err := uuid.NewV4()
+	if err != nil {
+		// try yet
+		u, err = uuid.NewV4()
+		if err != nil {
+			panic(fmt.Errorf("error generate traceId %w", err))
+		}
+	}
 	t := time.Now().Unix()
 	return fmt.Sprintf(traceIdTemplate, t, u)
 }

@@ -22,6 +22,7 @@ func New(logger *log.Logger) (*Server, error) {
 	return s, nil
 }
 
+// Run http server
 func (s *Server) Run(addr string) error {
 	s.logger.Info(fmt.Sprintf("http server starting at port %s", addr))
 	err := s.Router.Start(addr)
@@ -31,6 +32,7 @@ func (s *Server) Run(addr string) error {
 	return nil
 }
 
+// configureEcho create echo router
 func configureEcho() *echo.Echo {
 	e := echo.New()
 	e.Debug = false
@@ -42,16 +44,17 @@ func configureEcho() *echo.Echo {
 	return e
 }
 
-func (s *Server) GroupRouter(prefix string, middleware ...echo.MiddlewareFunc) *echo.Group {
-	return s.Router.Group(prefix, middleware...)
-}
-
-func (s *Server) AddRouter(method, path string, handler HandlerFunc, middleware ...echo.MiddlewareFunc) {
-	s.Router.Add(method, path, wrapHandler(handler), middleware...)
-}
-
-func (s *Server) AddEndpoints(endpoints []*Endpoint) {
+// AddEndpoints add endpoints to the router with middleware
+func (s *Server) AddEndpoints(endpoints []*Endpoint, middleware ...echo.MiddlewareFunc) {
 	for _, endpoint := range endpoints {
-		s.Router.Add(endpoint.Method, endpoint.Path, wrapHandler(endpoint.Handle))
+		s.Router.Add(endpoint.Method, endpoint.Path, wrapHandler(endpoint.Handle), middleware...)
+	}
+}
+
+// AddEndpointsGroup add endpoints group with prefix to the router
+func (s *Server) AddEndpointsGroup(prefix string, endpoints []*Endpoint, middleware ...echo.MiddlewareFunc) {
+	g := s.Router.Group(prefix, middleware...)
+	for _, endpoint := range endpoints {
+		g.Add(endpoint.Method, endpoint.Path, wrapHandler(endpoint.Handle), middleware...)
 	}
 }
