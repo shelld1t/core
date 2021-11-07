@@ -1,15 +1,14 @@
-package core
+package app
 
 import (
 	"github.com/pkg/errors"
-	"github.com/shelld1t/core/app"
 	"github.com/shelld1t/core/httpServer"
 	"github.com/shelld1t/core/log"
 )
 
 type App struct {
 	server *httpServer.Server
-	Config *app.Config
+	Config *Config
 	Log    *log.Logger
 }
 
@@ -19,7 +18,7 @@ const (
 	defaultConfigPath = "config/default.yml"
 )
 
-func NewWithConfig(config *app.Config) (*App, error) {
+func NewWithConfig(config *Config) (*App, error) {
 	l, err := configureLogger(config)
 	if err != nil {
 		return nil, errors.Wrap(err, "error create logger")
@@ -39,7 +38,7 @@ func NewWithConfig(config *app.Config) (*App, error) {
 
 // New create app with default configuration from
 func New() (*App, error) {
-	defaultConfig, err := app.CreateConfig(defaultConfigPath)
+	defaultConfig, err := CreateConfig(defaultConfigPath)
 	if err != nil {
 		return nil, errors.Wrap(err, "error create defaultConfig")
 	}
@@ -54,7 +53,7 @@ func (a *App) InitHttpHandlers(f initHandlersFunc) error {
 	return f(a.server)
 }
 
-func configureLogger(config *app.Config) (*log.Logger, error) {
+func configureLogger(config *Config) (*log.Logger, error) {
 	rootLog, err := log.NewLogger(config.LoggerCfg)
 
 	if err != nil {
